@@ -17,6 +17,10 @@ export type AladinBook = {
   salesPoint: number;
   adult: boolean;
   customerReviewRank: number;
+  /** ItemLookUp에서 OptResult=subInfo 요청 시에만 포함 */
+  subInfo?: {
+    itemPage?: number;
+  };
 };
 
 /** 앱 내부에서 사용하는 책 도메인 모델 */
@@ -30,6 +34,8 @@ export type Book = {
   pubDate: string;
   description: string;
   link: string;
+  /** 페이지 수. 상세(ItemLookUp)에서만 채워지며, 없으면 0 */
+  pageCount: number;
 };
 
 /** AladinBook → Book 변환 */
@@ -44,5 +50,6 @@ export function toBook(item: AladinBook): Book {
     pubDate: item.pubDate,
     description: item.description,
     link: item.link,
+    pageCount: item.subInfo?.itemPage ?? 0,
   };
 }

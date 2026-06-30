@@ -14,10 +14,12 @@ async function fetchBookDetail(isbn: string): Promise<Book> {
 export function useBookDetail(isbn: string) {
   const cached = useShelfStore((s) => s.bookCache[isbn]);
 
+  // 캐시가 있으면 즉시 보여주되, 페이지 수 등 상세 정보를 채우기 위해
+  // 백그라운드로 한 번 더 받아온다(서버 라우트가 1시간 캐싱).
   return useQuery<Book>({
     queryKey: ["book", isbn],
     queryFn: () => fetchBookDetail(isbn),
     initialData: cached,
-    staleTime: cached ? Infinity : 0,
+    staleTime: 0,
   });
 }

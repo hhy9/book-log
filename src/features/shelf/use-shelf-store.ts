@@ -15,6 +15,7 @@ type ShelfStore = {
     isbn: string,
     record: Partial<Pick<ShelfItem, "rating" | "memo" | "startedAt" | "finishedAt">>
   ) => void;
+  cacheBook: (book: Book) => void;
   getItem: (isbn: string) => ShelfItem | undefined;
 };
 
@@ -58,6 +59,18 @@ export const useShelfStore = create<ShelfStore>()(
         set((state) => ({
           items: state.items.map((i) => (i.isbn === isbn ? { ...i, ...record } : i)),
         })),
+
+      cacheBook: (book) => {
+        // 서재에 담긴 책의 캐시만 더 완전한 정보(페이지 수 등)로 갱신
+        if (!get().items.some((i) => i.isbn === book.isbn)) return;
+        const cached = get().bookCache[book.isbn];
+        if (cached && cached.pageCount === book.pageCount && cached.description === book.description) {
+          return;
+        }
+        set((state) => ({
+          bookCache: { ...state.bookCache, [book.isbn]: book },
+        }));
+      },
 
       getItem: (isbn) => get().items.find((i) => i.isbn === isbn),
     }),

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Plus, Check, ChevronLeft } from "lucide-react";
@@ -14,9 +15,14 @@ type Props = {
 export function BookDetailPage({ isbn }: Props) {
   const router = useRouter();
   const { data: book, isLoading, isError, error } = useBookDetail(isbn);
-  const { addItem, removeItem, getItem } = useShelfStore();
+  const { addItem, removeItem, getItem, cacheBook } = useShelfStore();
   const shelfItem = getItem(isbn);
   const isInShelf = !!shelfItem;
+
+  // 받아온 상세 정보(페이지 수 등)를 서재 캐시에 반영해 통계에서 쓰이도록 함
+  useEffect(() => {
+    if (book) cacheBook(book);
+  }, [book, cacheBook]);
 
   if (isLoading) {
     return (

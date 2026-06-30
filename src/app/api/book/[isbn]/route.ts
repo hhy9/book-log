@@ -20,6 +20,7 @@ export async function GET(
     itemIdType,
     ItemId: isbn,
     Cover: "Big",
+    OptResult: "subInfo",
     output: "js",
     Version: "20131101",
   });

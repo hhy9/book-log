@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/search", label: "책 검색" },
   { href: "/shelf", label: "내 서재" },
+  { href: "/stats", label: "통계" },
 ];
 
 export function Nav() {
