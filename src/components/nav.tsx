@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/search", label: "책 검색" },
   { href: "/shelf", label: "내 서재" },
   { href: "/stats", label: "통계" },
+  { href: "/recommend", label: "AI 추천" },
 ];
 
 export function Nav() {
