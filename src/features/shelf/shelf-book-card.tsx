@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { X } from "lucide-react";
 import type { Book } from "@/types/book";
 import type { ShelfItem, ShelfStatus } from "@/types/shelf";
@@ -39,7 +40,12 @@ export function ShelfBookCard({ item, book }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col gap-1 min-w-0">
-        <p className="line-clamp-2 text-sm font-semibold leading-snug">{book.title}</p>
+        <Link
+          href={`/book/${item.isbn}`}
+          className="line-clamp-2 text-sm font-semibold leading-snug hover:underline"
+        >
+          {book.title}
+        </Link>
         <p className="line-clamp-1 text-xs text-muted-foreground">{book.author}</p>
         <p className="line-clamp-1 text-xs text-muted-foreground">{book.publisher}</p>
 

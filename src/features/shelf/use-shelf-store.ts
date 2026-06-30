@@ -11,6 +11,10 @@ type ShelfStore = {
   addItem: (book: Book) => void;
   removeItem: (isbn: string) => void;
   updateStatus: (isbn: string, status: ShelfStatus) => void;
+  updateRecord: (
+    isbn: string,
+    record: Partial<Pick<ShelfItem, "rating" | "memo" | "startedAt" | "finishedAt">>
+  ) => void;
   getItem: (isbn: string) => ShelfItem | undefined;
 };
 
@@ -48,6 +52,11 @@ export const useShelfStore = create<ShelfStore>()(
       updateStatus: (isbn, status) =>
         set((state) => ({
           items: state.items.map((i) => (i.isbn === isbn ? { ...i, status } : i)),
+        })),
+
+      updateRecord: (isbn, record) =>
+        set((state) => ({
+          items: state.items.map((i) => (i.isbn === isbn ? { ...i, ...record } : i)),
         })),
 
       getItem: (isbn) => get().items.find((i) => i.isbn === isbn),
