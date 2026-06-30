@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Plus, Check } from "lucide-react";
 import type { Book } from "@/types/book";
 import { useShelfStore } from "@/features/shelf/use-shelf-store";
@@ -41,7 +42,12 @@ export function BookCard({ book }: Props) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <p className="line-clamp-2 text-sm font-semibold leading-snug">{book.title}</p>
+        <Link
+          href={`/book/${book.isbn}`}
+          className="line-clamp-2 text-sm font-semibold leading-snug hover:underline"
+        >
+          {book.title}
+        </Link>
         <p className="line-clamp-1 text-xs text-muted-foreground">{book.author}</p>
         <p className="line-clamp-1 text-xs text-muted-foreground">{book.publisher}</p>
       </div>
