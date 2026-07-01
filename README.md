@@ -2,7 +2,7 @@
 
 내가 읽은/읽을 책을 **기록**하고, 독서 **통계를 차트**로 보고, **AI로 다음 책을 추천**받는 개인용 독서 기록 웹앱.
 
-> **데모**: <배포-URL-여기에> · **레포**: https://github.com/hhy9/book-log
+> **데모**: https://book-log-steel.vercel.app/ · **레포**: https://github.com/hhy9/book-log
 
 한 프로젝트에서 **검색·상태관리**, **데이터 시각화(차트)**, **LLM 통합**, **인증·DB**를 모두 다룹니다.
 
