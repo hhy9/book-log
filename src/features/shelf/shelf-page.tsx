@@ -13,7 +13,7 @@ const TABS: { label: string; value: ShelfStatus }[] = [
 
 export function ShelfPage() {
   const [activeTab, setActiveTab] = useState<ShelfStatus>("want");
-  const { items, bookCache } = useShelfStore();
+  const { items, bookCache, ready } = useShelfStore();
 
   const filtered = items.filter((i) => i.status === activeTab);
   const counts = {
@@ -44,7 +44,9 @@ export function ShelfPage() {
       </div>
 
       <div className="mt-4 flex flex-col gap-3">
-        {filtered.length === 0 ? (
+        {!ready ? (
+          <p className="py-16 text-center text-muted-foreground">불러오는 중...</p>
+        ) : filtered.length === 0 ? (
           <p className="py-16 text-center text-muted-foreground">
             {activeTab === "want" && "읽고 싶은 책을 검색해서 담아보세요."}
             {activeTab === "reading" && "현재 읽고 있는 책이 없습니다."}

@@ -2,14 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AuthButton } from "@/features/auth/auth-button";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const LINKS = [
   { href: "/search", label: "책 검색" },
   { href: "/shelf", label: "내 서재" },
   { href: "/stats", label: "통계" },
-  { href: "/recommend", label: "AI 추천" },
 ];
 
 export function Nav() {
@@ -17,16 +14,16 @@ export function Nav() {
 
   return (
     <header className="border-b bg-background">
-      <nav className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3 sm:gap-6">
-        <Link href="/" className="shrink-0 text-base font-bold">
+      <nav className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-3">
+        <Link href="/" className="text-base font-bold">
           책장
         </Link>
-        <div className="flex gap-3 overflow-x-auto sm:gap-4">
+        <div className="flex gap-4">
           {LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className={`shrink-0 text-sm transition-colors hover:text-foreground ${
+              className={`text-sm transition-colors hover:text-foreground ${
                 pathname.startsWith(href)
                   ? "font-medium text-foreground"
                   : "text-muted-foreground"
@@ -35,10 +32,6 @@ export function Nav() {
               {label}
             </Link>
           ))}
-        </div>
-        <div className="ml-auto flex shrink-0 items-center gap-2">
-          <ThemeToggle />
-          <AuthButton />
         </div>
       </nav>
     </header>

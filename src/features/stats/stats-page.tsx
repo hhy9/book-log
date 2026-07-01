@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { BarChart3 } from "lucide-react";
 import { useShelfStore } from "@/features/shelf/use-shelf-store";
-import { useHydrated } from "@/lib/use-hydrated";
 import { computeStats } from "./stats";
 import { SummaryCards } from "./summary-cards";
 import { MonthlyChart } from "./monthly-chart";
@@ -11,9 +10,8 @@ import { GenreChart } from "./genre-chart";
 import { CopyLists } from "./copy-lists";
 
 export function StatsPage() {
-  // zustand persist 하이드레이션 및 Recharts 측정 이슈를 피하기 위해 마운트 후 렌더
-  const mounted = useHydrated();
-
+  // DB 로드 완료 후 렌더 (Recharts 측정 이슈 및 빈 상태 깜빡임 방지)
+  const ready = useShelfStore((s) => s.ready);
   const items = useShelfStore((s) => s.items);
   const bookCache = useShelfStore((s) => s.bookCache);
 
@@ -24,7 +22,7 @@ export function StatsPage() {
     <div className="mx-auto w-full max-w-4xl px-4 py-8">
       <h1 className="mb-6 text-2xl font-bold">통계</h1>
 
-      {!mounted ? (
+      {!ready ? (
         <div className="h-64 animate-pulse rounded-lg bg-muted" />
       ) : !stats.hasData ? (
         <div className="flex flex-col items-center gap-3 rounded-lg border border-dashed py-20 text-center">

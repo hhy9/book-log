@@ -45,7 +45,9 @@ export function GenreChart({ data }: Props) {
             <Tooltip
               contentStyle={{
                 borderRadius: 8,
-                border: "1px solid hsl(var(--border))",
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                color: "var(--foreground)",
                 fontSize: 12,
               }}
               formatter={(value, name) => [`${value}권`, name]}
