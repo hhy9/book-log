@@ -43,8 +43,8 @@
 - [x] Supabase 연동: books / shelf_items 테이블, localStorage → DB 이전
 - [x] Supabase Auth 로그인 (익명 우선 + 선택적 Google OAuth)
 - [x] 반응형 점검 + 다크모드
-- [ ] 최종 배포 + 커스텀 점검
-- [ ] README 작성 (스크린샷, 기술 선택 이유, 트러블슈팅, 데모 링크)
+- [x] 최종 배포 + 커스텀 점검
+- [x] README 작성 (스크린샷, 기술 선택 이유, 트러블슈팅, 데모 링크)
 
 ## 이번 주 목표
 - Phase 0 전체 + Phase 1의 `/api/search`까지. ("검색해서 결과 카드 띄우기"가 보이면 성공)
