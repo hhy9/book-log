@@ -33,24 +33,26 @@ export function MonthlyChart({ data, year }: Props) {
       ) : (
         <ResponsiveContainer width="100%" height={260}>
           <BarChart data={data} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis
               dataKey="month"
-              tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+              tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
               allowDecimals={false}
-              tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+              tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
               tickLine={false}
               axisLine={false}
             />
             <Tooltip
-              cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }}
+              cursor={{ fill: "var(--muted)", opacity: 0.4 }}
               contentStyle={{
                 borderRadius: 8,
-                border: "1px solid hsl(var(--border))",
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                color: "var(--foreground)",
                 fontSize: 12,
               }}
               formatter={(value) => [`${value}권`, "완독"]}
