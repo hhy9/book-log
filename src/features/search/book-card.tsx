@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Plus, Check } from "lucide-react";
 import type { Book } from "@/types/book";
+import { BookCover } from "@/components/book-cover";
 import { useShelfStore } from "@/features/shelf/use-shelf-store";
 
 type Props = {
@@ -25,26 +25,17 @@ export function BookCard({ book }: Props) {
 
   return (
     <div className="flex flex-col gap-2 rounded-lg border bg-card p-3 shadow-sm transition-shadow hover:shadow-md">
-      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md bg-muted">
-        {book.coverUrl ? (
-          <Image
-            src={book.coverUrl}
-            alt={book.title}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="object-cover"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-muted-foreground text-sm">
-            표지 없음
-          </div>
-        )}
-      </div>
+      <BookCover
+        coverUrl={book.coverUrl}
+        title={book.title}
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        className="aspect-[3/4] w-full"
+      />
 
       <div className="flex flex-col gap-0.5">
         <Link
           href={`/book/${book.isbn}`}
-          className="line-clamp-2 text-sm font-semibold leading-snug hover:underline"
+          className="line-clamp-2 font-serif text-sm font-semibold leading-snug hover:underline"
         >
           {book.title}
         </Link>

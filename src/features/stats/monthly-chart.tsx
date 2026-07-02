@@ -4,6 +4,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -18,6 +19,7 @@ type Props = {
 
 export function MonthlyChart({ data, year }: Props) {
   const total = data.reduce((s, d) => s + d.count, 0);
+  const max = Math.max(...data.map((d) => d.count));
 
   return (
     <div className="flex flex-col gap-3 rounded-lg border bg-card p-4">
@@ -57,7 +59,14 @@ export function MonthlyChart({ data, year }: Props) {
               }}
               formatter={(value) => [`${value}권`, "완독"]}
             />
-            <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} maxBarSize={40} />
+            <Bar dataKey="count" radius={[3, 3, 0, 0]} maxBarSize={40}>
+              {data.map((d) => (
+                <Cell
+                  key={d.month}
+                  fill={d.count === max && max > 0 ? "var(--primary)" : "#c9b48f"}
+                />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       )}

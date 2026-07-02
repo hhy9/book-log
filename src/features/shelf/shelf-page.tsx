@@ -24,7 +24,7 @@ export function ShelfPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold">내 서재</h1>
+      <h1 className="mb-6 font-serif text-3xl font-bold tracking-tight">내 서재</h1>
 
       <div className="flex gap-1 rounded-lg border bg-muted p-1">
         {TABS.map((tab) => (

@@ -8,14 +8,14 @@ type Props = {
 };
 
 const COLORS = [
-  "#6366f1",
-  "#22c55e",
-  "#f59e0b",
-  "#ef4444",
-  "#06b6d4",
-  "#a855f7",
-  "#ec4899",
-  "#84cc16",
+  "#8a5a2b",
+  "#3b5a4a",
+  "#c58a3d",
+  "#4a4a6b",
+  "#7a3b3b",
+  "#5a6b7a",
+  "#6b4a5a",
+  "#4a5a3b",
 ];
 
 export function GenreChart({ data }: Props) {

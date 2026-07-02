@@ -8,9 +8,11 @@ function Card({ label, value, suffix }: { label: string; value: string; suffix?:
   return (
     <div className="flex flex-col gap-1 rounded-lg border bg-card p-4">
       <span className="text-xs text-muted-foreground">{label}</span>
-      <span className="text-2xl font-bold tabular-nums">
+      <span className="font-serif text-[28px] font-bold tabular-nums">
         {value}
-        {suffix && <span className="ml-0.5 text-sm font-normal text-muted-foreground">{suffix}</span>}
+        {suffix && (
+          <span className="ml-0.5 font-sans text-sm font-normal text-muted-foreground">{suffix}</span>
+        )}
       </span>
     </div>
   );

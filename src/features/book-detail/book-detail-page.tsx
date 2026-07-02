@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Plus, Check, ChevronLeft } from "lucide-react";
+import { BookCover } from "@/components/book-cover";
 import { useShelfStore } from "@/features/shelf/use-shelf-store";
 import { useBookDetail } from "./use-book-detail";
 import { RecordForm } from "./record-form";
@@ -60,24 +60,15 @@ export function BookDetailPage({ isbn }: Props) {
       </button>
 
       <div className="flex gap-6">
-        <div className="relative w-32 shrink-0 aspect-[3/4] rounded-lg overflow-hidden bg-muted">
-          {book.coverUrl ? (
-            <Image
-              src={book.coverUrl}
-              alt={book.title}
-              fill
-              sizes="128px"
-              className="object-cover"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-muted-foreground text-xs">
-              표지 없음
-            </div>
-          )}
-        </div>
+        <BookCover
+          coverUrl={book.coverUrl}
+          title={book.title}
+          sizes="128px"
+          className="w-32 shrink-0 aspect-[3/4]"
+        />
 
         <div className="flex flex-col gap-2 min-w-0">
-          <h1 className="text-xl font-bold leading-snug">{book.title}</h1>
+          <h1 className="font-serif text-2xl font-bold leading-snug tracking-tight">{book.title}</h1>
           <p className="text-sm text-muted-foreground">{book.author}</p>
           <p className="text-sm text-muted-foreground">
             {book.publisher}
@@ -111,7 +102,7 @@ export function BookDetailPage({ isbn }: Props) {
       </div>
 
       {book.description && (
-        <p className="text-sm text-muted-foreground leading-relaxed border-t pt-4">
+        <p className="border-t pt-5 font-serif text-[15px] leading-[1.9] text-muted-foreground">
           {book.description}
         </p>
       )}

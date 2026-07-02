@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-2xl font-bold">책장</h1>
-    </main>
-  );
+import { HomePage } from "@/features/home/home-page";
+
+export default function Page() {
+  return <HomePage />;
 }

@@ -17,24 +17,30 @@ export function Nav() {
 
   return (
     <header className="border-b bg-background">
-      <nav className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3 sm:gap-6">
-        <Link href="/" className="shrink-0 text-base font-bold">
-          책장
+      <nav className="mx-auto flex max-w-6xl items-center gap-3 px-5 py-3.5 sm:gap-7">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
+          <span className="flex h-5 w-4 items-center justify-center rounded-[1px] border-[1.5px] border-primary">
+            <span className="h-3 w-px bg-primary" />
+          </span>
+          <span className="font-serif text-lg font-bold tracking-tight">책장</span>
         </Link>
-        <div className="flex gap-3 overflow-x-auto sm:gap-4">
-          {LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`shrink-0 text-sm transition-colors hover:text-foreground ${
-                pathname.startsWith(href)
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+        <div className="flex gap-4 overflow-x-auto sm:gap-5">
+          {LINKS.map(({ href, label }) => {
+            const active = pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`shrink-0 border-b-2 pb-0.5 text-[13.5px] transition-colors ${
+                  active
+                    ? "border-primary font-medium text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <ThemeToggle />
