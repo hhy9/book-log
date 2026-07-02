@@ -129,13 +129,6 @@ npm run typecheck  # tsc --noEmit
 
 ## 📌 이력서 한 줄
 
-> 독서 기록·통계 대시보드 + AI 추천 웹앱 (Next.js 16·TypeScript·TanStack Query·Recharts·Supabase·Gemini) — [데모] · [GitHub]
+> 독서 기록·통계 대시보드 + AI 추천 웹앱 (Next.js 16·TypeScript·TanStack Query·Recharts·Supabase·Gemini) 
 
 ---
-
-## 📷 스크린샷
-
-<!-- 배포 후 캡처해서 교체하세요 -->
-| 검색 | 통계 | AI 추천 |
-|------|------|---------|
-| _(스크린샷)_ | _(스크린샷)_ | _(스크린샷)_ |
