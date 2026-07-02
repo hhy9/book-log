@@ -26,8 +26,8 @@ export function StarRating({ value, onChange }: Props) {
           <Star
             className={`h-6 w-6 transition-colors ${
               star <= display
-                ? "fill-yellow-400 text-yellow-400"
-                : "fill-transparent text-muted-foreground"
+                ? "fill-primary text-primary"
+                : "fill-transparent text-muted-foreground/40"
             }`}
           />
         </button>

@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Plus, Check } from "lucide-react";
 import type { Recommendation } from "./api";
+import { BookCover } from "@/components/book-cover";
 import { useShelfStore } from "@/features/shelf/use-shelf-store";
 
 type Props = {
@@ -17,24 +17,14 @@ export function RecommendCard({ rec }: Props) {
 
   return (
     <div className="flex gap-4 rounded-lg border bg-card p-4 shadow-sm">
-      <Link
-        href={`/book/${book.isbn}`}
-        className="relative h-32 w-22 shrink-0 overflow-hidden rounded-md bg-muted"
-        style={{ width: 88 }}
-      >
-        {book.coverUrl ? (
-          <Image src={book.coverUrl} alt={book.title} fill sizes="88px" className="object-cover" />
-        ) : (
-          <div className="flex h-full items-center justify-center text-muted-foreground text-xs">
-            표지 없음
-          </div>
-        )}
+      <Link href={`/book/${book.isbn}`} className="h-32 w-[88px] shrink-0">
+        <BookCover coverUrl={book.coverUrl} title={book.title} sizes="88px" className="h-full w-full" />
       </Link>
 
       <div className="flex flex-1 flex-col gap-1 min-w-0">
         <Link
           href={`/book/${book.isbn}`}
-          className="line-clamp-2 text-sm font-semibold leading-snug hover:underline"
+          className="line-clamp-2 font-serif text-sm font-semibold leading-snug hover:underline"
         >
           {book.title}
         </Link>

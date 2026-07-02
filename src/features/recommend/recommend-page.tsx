@@ -42,12 +42,12 @@ export function RecommendPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-8">
-      <h1 className="mb-2 flex items-center gap-2 text-2xl font-bold">
+      <h1 className="mb-2 flex items-center gap-2 font-serif text-3xl font-bold tracking-tight">
         <Sparkles className="h-6 w-6 text-primary" />
         AI 추천
       </h1>
       <p className="mb-6 text-sm text-muted-foreground">
-        원하는 분위기나 상황을 적으면 어울리는 책을 추천해드려요.
+        원하는 분위기나 상황을 적으면, 당신의 서재에 어울리는 책을 골라드려요.
       </p>
 
       <div className="flex flex-col gap-3">

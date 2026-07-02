@@ -20,7 +20,10 @@ export function StatsPage() {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold">통계</h1>
+      <div className="mb-6">
+        <p className="kicker text-muted-foreground">한 해를 돌아보며</p>
+        <h1 className="font-serif text-3xl font-bold tracking-tight">통계</h1>
+      </div>
 
       {!ready ? (
         <div className="h-64 animate-pulse rounded-lg bg-muted" />

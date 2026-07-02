@@ -31,7 +31,7 @@ export function SearchPage() {
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold">책 검색</h1>
+      <h1 className="mb-6 font-serif text-3xl font-bold tracking-tight">책 검색</h1>
       <SearchBar value={query} onChange={setQuery} />
 
       <div className="mt-6">
